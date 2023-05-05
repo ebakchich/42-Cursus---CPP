@@ -50,9 +50,7 @@ bool isDigit(std::string str)
     while (*ptr != '\0')
     {
         if (!std::isdigit(*ptr))
-        {
             return false;
-        }
         ptr++;
     }
     return true;
@@ -93,11 +91,11 @@ void    ft_search(PhoneBook *phonebook, int indx)
     }
     if (indx != 0)
     {
-        std::cout << phonebook->Search(0, index) << std::endl;
-        std::cout << phonebook->Search(1, index) << std::endl;
-        std::cout << phonebook->Search(2, index) << std::endl;
-        std::cout << phonebook->Search(3, index) << std::endl;
-        std::cout << phonebook->Search(4, index) << std::endl;
+        std::cout << "first name: " << phonebook->Search(0, index) << std::endl;
+        std::cout << "last name: " << phonebook->Search(1, index) << std::endl;
+        std::cout << "nickname: " << phonebook->Search(2, index) << std::endl;
+        std::cout << "phone number: " << phonebook->Search(3, index) << std::endl;
+        std::cout << "darkest secret: " << phonebook->Search(4, index) << "\n" << std::endl;
     }
 }
 
@@ -121,6 +119,8 @@ void    ft_add(PhoneBook *phonebook, int index)
         else if (i == 4)
             std::cout << "Please enter you darkest secret: ";
         getline(std::cin, str);
+        if (std::cin.eof())
+            std::exit(1);
         if (str.size() == 0)
             continue;
         result = isDigit(str);  
@@ -150,6 +150,8 @@ int main()
     {
         std::cout << "Enter cmd: ";
         getline(std::cin, cmd);
+        if (std::cin.eof())
+            std::exit(1);
         if (cmd.compare("ADD") == 0)
         {
             ft_add(&phonebook, index);

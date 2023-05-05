@@ -1,6 +1,6 @@
 SRC			= main.cpp
 NAME		= brain
-OBJ			= $(SRC:.pp=.o)
+OBJ			= $(SRC:.cpp=.o)
 C			= c++
 CPPFLAGS	= -std=c++98 -Wall -Werror -Wextra
 
@@ -12,7 +12,7 @@ all : $(NAME)
 clean :
 	@rm -f $(OBJ)
 
-fclen : clean
+fclean : clean
 	@rm -f $(NAME)
 
 re : fclean all
