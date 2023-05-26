@@ -1,7 +1,7 @@
-SRC	= main.cpp Zombie.cpp zombieHorde.cpp
-NAME	= zombie
-OBJ		= $(SRC:.cpp=.o)
-C		= c++
+SRC			= main.cpp Zombie.cpp zombieHorde.cpp
+NAME		= zombie
+OBJ			= $(SRC:.cpp=.o)
+C			= c++
 CPPFLAGS	= -std=c++98 -Wall -Werror -Wextra
 
 $(NAME) : $(OBJ)

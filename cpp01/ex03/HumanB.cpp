@@ -5,7 +5,10 @@ void    HumanB::setWeapon(Weapon &a1) {
 }
 
 void    HumanB::attack() {
-    std::cout << name << " attacks with their " << a->getType() << std::endl;
+    if (a)
+        std::cout << name << " attacks with their " << a->getType() << std::endl;
+    else
+        std::cout << "No weapon" << std::endl;
 }
 
 HumanB::HumanB(std::string name2) {

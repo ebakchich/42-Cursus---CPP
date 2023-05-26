@@ -2,10 +2,13 @@
 #include <fstream>
 #include <string>
 
-void replaceAll(std::string& str, const std::string& s1, const std::string& s2) {
+void replaceAll(std::string& str, const std::string& s1, const std::string& s2)
+{
     size_t pos = 0;
-    while ((pos = str.find(s1, pos)) != std::string::npos) {
-        str.replace(pos, s1.length(), s2);
+    while ((pos = str.find(s1, pos)) != std::string::npos)
+    {
+        str.erase(pos, s1.length());
+        str.insert(pos, s2);
         pos += s2.length();
     }
 }
@@ -15,8 +18,8 @@ int main(int ac, char **av)
     (void)ac;
 
     std::string     line;
-    std::ifstream   input_file(av[1]);
-    std::ofstream   output_file("filename.txt");
+    std::ifstream   input_file(av[1], std::ios::in);
+    std::ofstream   output_file("filename.replace");
 
     while (std::getline(input_file, line))
     {
