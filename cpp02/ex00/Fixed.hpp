@@ -9,10 +9,10 @@ class Fixed
         static const int    number = 8;
     public:
         Fixed();
-        Fixed(Fixed& copy);
+        Fixed(Fixed& copy);  
         ~Fixed();
         Fixed&  operator=(Fixed& assign);
-        int     getRawBits(void);
+        int     getRawBits(void); 
         void    setRawBits(int const raw);
 };
 

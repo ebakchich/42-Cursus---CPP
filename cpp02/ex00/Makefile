@@ -3,8 +3,8 @@ SRC			= main.cpp Fixed.cpp
 C			= c++
 CPPFLAGS	= -std=c++98 -Wall -Wextra -Werror
 OBJ			= $(SRC:.cpp=.o)
-
-$(NAME) : $(OBJ)
+HEADER 		= 	Fixed.hpp
+$(NAME) : $(OBJ) $(HEADER)
 	@$(C) $(CPPFLAGS) $(OBJ) -o $(NAME);
 
 all : $(NAME)

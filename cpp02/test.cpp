@@ -1,16 +1,19 @@
 #include <iostream>
-#include <iomanip>
 #include <math.h>
 
-int main() {
-    // double dValue = 42.42f;
-    // std::cout << std::fixed << std::setprecision(3) << dValue    << std::endl;
-    // std::cout << dValue    << std::endl;
+int main()
+{
+    double   a = 1.5f;
+    double   b = 3.7f;
+
+    int fixed = (int )roundf( 28.2f * 256 ) ;
+    int fixed1 = (int )roundf( 3.7f * 256 ) ;
     // int fixed = (int )roundf( 2.2f * 256 ) ;
-        // int fixed = (int )roundf( 1234.4321f * (1 << 8) ) ;
+    std::cout << fixed << std::endl;
+    std::cout << fixed1 << std::endl;
 
-    // std::cout << fixed;
-
-    std::cout << 2.2 * 3.1 << std::endl;
+    // std::cout << ((fixed * fixed1) >> 8) << std::endl;
+    // std::cout << (((float)((fixed / fixed1) << 8)) / 256) << std::endl;
+    // std::cout << (((float)(((fixed << 8) / fixed1))) / 256) << std::endl;
     return (0);
 }

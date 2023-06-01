@@ -19,14 +19,19 @@ int main(int ac, char **av)
 
     std::string     line;
     std::ifstream   input_file(av[1], std::ios::in);
-    std::ofstream   output_file("filename.replace");
+    std::ofstream   output_file("d.txt"); //
 
-    while (std::getline(input_file, line))
-    {
-        replaceAll(line, av[2], av[3]);
-        output_file << line << std::endl;
-    }
-    input_file.close();
+    if (input_file.is_open()) //
+        {
+        while (std::getline(input_file, line))
+        {
+            replaceAll(line, av[2], av[3]);
+            output_file << line << std::endl;
+        }
+        input_file.close();
+        }
+    else
+        std::cout << "Unable to open file" << std::endl;
     output_file.close();
 
     return 0;

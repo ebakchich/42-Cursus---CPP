@@ -14,15 +14,17 @@ class Fixed
 		Fixed(float const fnumber);
 		Fixed(const Fixed& copy);
 		~Fixed();
-		Fixed&                  operator=(const Fixed& assign);
 		int                     getRawBits(void) const;
 		void                    setRawBits(int const raw);
 		float                   toFloat( void ) const;
 		int                     toInt( void ) const;
-		Fixed&					min(Fixed& a, Fixed& b);
-		Fixed const&			min(Fixed const& a, Fixed const& b);
-		Fixed&					max(Fixed& a, Fixed& b);
-		Fixed const&			max(Fixed const& a, Fixed const& b);
+		//
+		static Fixed&					min(Fixed& a, Fixed& b);
+		static Fixed const&			min(Fixed const& a, Fixed const& b);
+		static Fixed&					max(Fixed& a, Fixed& b);
+		static Fixed const&			max(Fixed const& a, Fixed const& b);
+		// copy assignment operator
+		Fixed&                  operator=(const Fixed& assign);
 		// The 6 comparison operators
 		bool                    operator>(const Fixed& obj) const;
 		bool                    operator<(const Fixed& obj) const;
@@ -41,7 +43,6 @@ class Fixed
 		Fixed					operator++(int); //post-dec obj++
 		Fixed					operator--(int); //post-dec obj--
 };
-		// copy assignment operator
 		std::ostream&    operator<<(std::ostream& os, const Fixed& obj);
 
 #endif

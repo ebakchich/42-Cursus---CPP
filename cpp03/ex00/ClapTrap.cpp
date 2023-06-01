@@ -2,29 +2,48 @@
 
 ClapTrap::ClapTrap()
 {
-    this->name = "name";
-    this->attack_damage = 0;
-    this->hit_point = 10;
-    this->energy_point = 10;
+    std::cout << "default constructor called" << std::endl;
+    name = "anon";
+    attack_damage = 0;
+    hit_point = 10;
+    energy_point = 10;
+}
+
+ClapTrap::ClapTrap(std::string name)
+{
+    std::cout << "parameters constructor called" << std::endl;
+    this->name = name;
+    attack_damage = 0;
+    hit_point = 10;
+    energy_point = 10;
 }
 
 void ClapTrap::attack(const std::string &target)
 {
-    this->energy_point--;
-    std::cout << "ClapTrap attacks , it cauvese .."  << attack_damage; 
+    if (this->energy_point && this->hit_point)
+    {
+        std::cout << "ClapTrap" << this->name << "attacks" << target << "causing" << this->attack_damage << "points of damage!" << std::endl;
+        this->energy_point--;
+    }
+    else
+        std::cout << "No energy point or health" << std::endl;
 }
 
 void ClapTrap::takeDamage(unsigned int amount)
 {
-    hit_point -= amount;
+    std::cout << "ClapTrap" << this->name << "take Damage" << std::endl;
+    if (this->hit_point)
+        this->hit_point--;
 }
 
 void ClapTrap::beRepaired(unsigned int amount)
 {
-    
-    if(hit_point && energy_point)
-    {    
+     if (this->energy_point && this->hit_point)
+    {
+        std::cout << "ClapTrap" << this->name << "repairing" << std::endl;
+        this->hit_point += amount;
         this->energy_point--;
-        hit_point += amount;
     }
+    else
+        std::cout << "No energy point or health" << std::endl;
 }

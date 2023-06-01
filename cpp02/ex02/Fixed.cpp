@@ -36,7 +36,7 @@ void    Fixed::setRawBits(int const raw)
 
 float Fixed::toFloat(void) const
 {
-    return ((float)(getRawBits() / 256));
+    return (((float)getRawBits() / 256));
 }
 
 int Fixed::toInt(void) const
@@ -117,20 +117,20 @@ Fixed Fixed::operator/(const Fixed &obj) const
 {
     Fixed   temp;
 
-    temp.setRawBits((getRawBits() / obj.getRawBits()) << fractional);
+    temp.setRawBits(((getRawBits() << 8) / obj.getRawBits()));
     return (temp);
 }
 
 // The 4 increment/decrement
 Fixed &Fixed::operator++(void)
 {
-    setRawBits(value + (1 << fractional));
+    setRawBits(value + 1);
     return (*this);
 }
 
 Fixed &Fixed::operator--(void)
 {
-     setRawBits(value - (1 << fractional));
+     setRawBits(value - 1);
     return (*this);
 }
 
@@ -138,7 +138,7 @@ Fixed   Fixed::operator++(int)
 {
     Fixed   temp(*this);
 
-    setRawBits(value + (1 << fractional));
+    setRawBits(value + 1);
     return (temp);
 }
 
@@ -146,6 +146,35 @@ Fixed Fixed::operator--(int)
 {
     Fixed   temp(*this);
 
-    setRawBits(value - (1 << fractional));
+    setRawBits(value - 1);
     return (temp);
+}
+
+//
+Fixed &Fixed::min(Fixed &a, Fixed &b)
+{
+    if (a.getRawBits() < b.getRawBits())
+        return (a);
+    return (b);
+}
+
+Fixed &Fixed::max(Fixed &a, Fixed &b)
+{
+    if (a.getRawBits() > b.getRawBits())
+        return (a);
+    return (b);
+}
+
+Fixed const &Fixed::min(Fixed const& a, Fixed const& b)
+{
+    if (a.getRawBits() < b.getRawBits())
+        return (a);
+    return (b);
+}
+
+Fixed const &Fixed::max(Fixed const& a, Fixed const& b)
+{
+    if (a.getRawBits() > b.getRawBits())
+        return (a);
+    return (b);
 }
